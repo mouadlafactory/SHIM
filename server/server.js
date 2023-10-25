@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 require('dotenv').config();
 
-const port = process.env.PORT || 5000; // Use the defined PORT or default to 5000
+const port = process.env.PORT || 5000; // Use the defined PORT or default lol to 5000
 const mongoURI = process.env.MONGODB_URI;
 
 
