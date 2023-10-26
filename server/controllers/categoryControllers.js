@@ -18,7 +18,7 @@ router.get("/api/categories/:id", async (req, res) => {
   const category = await Category.findById(req.params.id);
   res.json(category);
 });
-
+// update category
 router.put("/api/categories/:id", async (req, res) => {
   const category = await Category.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
