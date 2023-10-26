@@ -74,7 +74,7 @@ const costumerSchema = new mongoose.Schema({
     resetPasswordTime: Date,
 });
 
-userSchema.pre("save", async function (next){
+costumerSchema.pre("save", async function (next){
     if(!this.isModified("password")){
       next();
     }
@@ -90,7 +90,7 @@ userSchema.pre("save", async function (next){
   };
   
   // compare password
-  userSchema.methods.comparePassword = async function (enteredPassword) {
+  costumerSchema.methods.comparePassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
   };
 
@@ -98,6 +98,6 @@ userSchema.pre("save", async function (next){
 
 
 // Use mongoose.model to create the User model
-const CostumerModel = mongoose.model('costumer', cosumerSchema);
+const CostumerModel = mongoose.model('costumer', costumerSchema);
 
 module.exports = CostumerModel;
