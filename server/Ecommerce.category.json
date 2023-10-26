@@ -1,0 +1,133 @@
+[{
+  "_id": {
+    "$oid": "653a8064526a196dcb94556c"
+  },
+  "categories": [
+    {
+      "name": "Website Development",
+      "sub": [
+        "Business Websites",
+        "E-commerce Development",
+        "Landings Pages",
+        "Blogs",
+        "Build a Complete Website"
+      ]
+    },
+    {
+      "name": "Website Platforms",
+      "sub": [
+        "WordPress",
+        "Shopify",
+        "Wix",
+        "Custom Websites",
+        "GoDaddy"
+      ]
+    },
+    {
+      "name": "Website Maintenance",
+      "sub": [
+        "Website Customization",
+        "Bug Fixes",
+        "Backup & Migration",
+        "Speed Optimization"
+      ]
+    },
+    {
+      "name": "Website Development",
+      "sub": [
+        "Business Websites",
+        "E-commerce Development",
+        "Landings Pages",
+        "Blogs",
+        "Build a Complete Website"
+      ]
+    },
+    {
+      "name": "Software Development",
+      "sub": [
+        "Python Developers",
+        "HTML & CSS Developers",
+        "AJavaScript Developers",
+        "Java Developers",
+        "PHP Developers",
+        "QA & Review"
+      ]
+    },
+    {
+      "name": "Software Developers",
+      "sub": [
+        "Python Developers",
+        "HTML & CSS Developers",
+        "JavaScript Developers",
+        "Java Developers",
+        "PHP Developers"
+      ]
+    },
+    {
+      "name": "QA & Review",
+      "sub": [
+        "Software Testing",
+        "Code Review",
+        "Design Review",
+        "User Testing"
+      ]
+    },
+    {
+      "name": "Mobile App Development",
+      "sub": [
+        "Android Developers",
+        "iOS Developers",
+        "Cross-platform Apps",
+        "App Customization",
+        "Bug Fixes"
+      ]
+    },
+    {
+      "name": "Game Development",
+      "sub": [
+        "PC Games",
+        "Mobile Games",
+        "Console Games",
+        "VR Games",
+        "Game Mods"
+      ]
+    },
+    {
+      "name": "Support & Cybersecurity",
+      "sub": [
+        "DevOps & Cloud",
+        "Support & IT",
+        "Cybersecurity",
+        "Convert Files"
+      ]
+    },
+    {
+      "name": "Al Development",
+      "sub": [
+        "Al Integrations",
+        "Al Websites",
+        "Al Chatbots",
+        "ChatGPT Applications",
+        "Al Agents"
+      ]
+    },
+    {
+      "name": "Chatbots",
+      "sub": [
+        "Discord Chatbots",
+        "Telegram Chatbots",
+        "Chatbot Development"
+      ]
+    },
+    {
+      "name": "Miscellaneous",
+      "sub": [
+        "Electronics Engineering",
+        "Development for Streamers",
+        "Blockchain & Cryptocurrency",
+        "NFT Development",
+        "Online Coding Lessons"
+      ]
+    }
+  ]
+}]

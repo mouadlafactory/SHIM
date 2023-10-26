@@ -13,3 +13,8 @@ const categorySchema = new Schema(
     }
 }
 )
+
+// Use mongoose.model to create the User model
+const categoryModel = mongoose.model('caregory', categorySchema);
+
+module.exports = categoryModel;
