@@ -10,7 +10,12 @@ const ReviewSchema = new mongoose.Schema({
     },
     
     CostumerID:{
-        type :mongoose.Schema.Types.ObjectId ,ref:'Costumer'
+        type :mongoose.Schema.Types.ObjectId ,
+        ref:'Costumer',required:true},
+    
+    commnadId:{
+        type :mongoose.Schema.Types.ObjectId ,
+        ref:'Command',required:true
     }
     
     

@@ -70,6 +70,15 @@ const costumerSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()        
     },
+    isVerified:{
+      type: Boolean,
+      default:false
+  },
+  successfulTransactions: [{
+    transactionId: { type: mongoose.Types.ObjectId, required: true },        
+    date: { type: Date, default: Date.now }
+  }],
+
     resetPasswordToken: String,
     resetPasswordTime: Date,
 });

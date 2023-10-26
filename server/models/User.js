@@ -133,9 +133,16 @@ const UserSchema = new mongoose.Schema({
         enum: ['bronze', 'silver', 'gold', 'platinum', 'diamond'],
         default: 'bronze'
     },
-    successfullTransctions:{
-        type: Number,
-    }
+    successfulTransactions: [{
+        transactionId: { type: mongoose.Types.ObjectId, required: true },        
+        date: { type: Date, default: Date.now }
+      }],
+    
+    isVerified:{
+        type: Boolean,
+        default:false
+    },
+
 
     
 });

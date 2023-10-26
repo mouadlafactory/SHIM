@@ -12,25 +12,40 @@ router.get('/', async (req, res) => {
   }
 });
 
-router.get("/allUsers/:username", async (req,res) => {
+// router.get("/users/:username", async (req,res) => {
+//   try {
+//     const user = await User.findOne({username: req.params.username});
+//     res.json(user);
+//   } catch (error) {
+//     console.error('Error fetching users:', error);
+//     res.status(500).json({ error: 'An error occurred while fetching users.' });
+//   }
+// });
+router.get("/users/:username", async (req, res) => {
   try {
-    const user = await User.findOne({username: req.params.username});
-    res.json(user);
+    const username = req.params.username;
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found.' });
+    }
+
+    return res.json(user);
   } catch (error) {
-    console.error('Error fetching users:', error);
-    res.status(500).json({ error: 'An error occurred while fetching users.' });
+    console.error('Error fetching user:', error);
+    return res.status(500).json({ error: 'An error occurred while fetching user.' });
   }
 });
 
 router.post("/addUsers", (req,res) => {
-  const { name, username, password, birthday } = req.body;
+  const { email, username, password, birthday } = req.body;
 
-  if (!name || !username || !password) {
+  if (!email || !username || !password) {
     return res.status(400).json({ success: false, message: "Missing required fields" });
   }
 
   const newUser = new User ({
-    name: name,
+    email: email,
     username: username,
     password: password,
     birthday: birthday,
@@ -90,6 +105,34 @@ router.put("/UpdateUser/:id", (req, res) => {
   });
 });
 
-module.exports = router;
+//trànsàctions
+router.post('/transactions/:username', async (req, res) => {
+  try {
+    const { transactionId } = req.body;
+    const username = req.params.username;
+
+    const user = await User.findOne({ username });
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    user.successfulTransactions.push({
+      transactionId,
+      
+      date: new Date()
+    });
+
+    await user.save();
+
+    return res.status(200).json(user);
+  } catch (error) {
+    console.error('Error adding transaction:', error);
+    return res.status(500).json({ error: 'An error occurred while adding the transaction' });
+  }
+});
+
 
 module.exports = router;
+
+
