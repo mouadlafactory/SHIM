@@ -70,15 +70,20 @@ const costumerSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()        
     },
-    isVerified: {
-        type: null,
-        default: Date.now()          
-    },
+    isVerified:{
+      type: Boolean,
+      default:false
+  },
+  successfulTransactions: [{
+    transactionId: { type: mongoose.Types.ObjectId, required: true },        
+    date: { type: Date, default: Date.now }
+  }],
+
     resetPasswordToken: String,
     resetPasswordTime: Date,
 });
 
-userSchema.pre("save", async function (next){
+costumerSchema.pre("save", async function (next){
     if(!this.isModified("password")){
       next();
     }
@@ -94,7 +99,7 @@ userSchema.pre("save", async function (next){
   };
   
   // compare password
-  userSchema.methods.comparePassword = async function (enteredPassword) {
+  costumerSchema.methods.comparePassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
   };
 
