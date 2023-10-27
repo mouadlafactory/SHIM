@@ -37,6 +37,10 @@ const costumerControllers = require('./controllers/costumerControllers');
 app.use('/costumer', costumerControllers);
 
 
+const categoryControllers = require('./controllers/categoryControllers');
+app.use('/costumer', categoryControllers);
+
+
 
 
 app.listen(port, (err, res) => {
