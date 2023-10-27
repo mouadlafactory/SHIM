@@ -38,7 +38,7 @@ app.use('/costumer', costumerControllers);
 
 
 const categoryControllers = require('./controllers/categoryControllers');
-app.use('/costumer', categoryControllers);
+app.use('/categories', categoryControllers);
 
 
 
