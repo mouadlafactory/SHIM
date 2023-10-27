@@ -94,5 +94,6 @@ router.get('/customers/:id', async (req, res) => {
     console.error('Error fetching customer:', error);
     res.status(500).json({ error: 'An error occurred while fetching the customer.' });
   }
-});
+});  
+
 module.exports = router;
