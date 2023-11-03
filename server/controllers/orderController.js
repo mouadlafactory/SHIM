@@ -109,7 +109,7 @@ router.get('/orders/:id', async (req, res, next) => {
     const uniqueIdentifier = generateUniqueIdentifier();
   
     try {
-              
+
       const order = await Order.findById(id);
   
       if (!order) {
@@ -130,3 +130,113 @@ router.get('/orders/:id', async (req, res, next) => {
     }
   });
 
+// deleting orders
+router.delete('/ordersInit/:id', async (req, res, next) => {
+    const id = req.params.id;
+  
+    
+    const uniqueIdentifier = generateUniqueIdentifier();
+  
+    try {
+      
+      const order = await Order.findById(id);
+  
+      if (!order) {
+        return res.status(404).json({ error: 'Order not found' });
+      }
+  
+      
+      order.initOrderId = {
+        id: uniqueIdentifier,
+        status: false,
+      };
+      await order.save();
+
+      res.send('OK');
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error initializing orders' });
+    }
+  });
+
+  router.delete('/ConfirmedOrder/:id', async (req, res, next) => {
+    const id = req.params.id;
+  
+    
+    const uniqueIdentifier = generateUniqueIdentifier();
+  
+    try {
+      
+      const order = await Order.findById(id);
+  
+      if (!order) {
+        return res.status(404).json({ error: 'Order not found' });
+      }
+  
+      
+      order.ConfirmedOrderId = {
+        id: uniqueIdentifier,
+        status: false,
+      };
+      await order.save();
+
+      res.send('OK');
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error initializing orders' });
+    }
+  });
+  router.delete('/ordersFinished/:id', async (req, res, next) => {
+    const id = req.params.id;
+  
+    
+    const uniqueIdentifier = generateUniqueIdentifier();
+  
+    try {
+      
+      const order = await Order.findById(id);
+  
+      if (!order) {
+        return res.status(404).json({ error: 'Order not found' });
+      }
+  
+      
+      order.finishedOrderId = {
+        id: uniqueIdentifier,
+        status: false,
+      };
+      await order.save();
+
+      res.send('OK');
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error initializing orders' });
+    }
+  });
+  
+  router.delete('/ordersDelivered/:id', async (req, res, next) => {
+
+    const id = req.params.id;    
+    const uniqueIdentifier = generateUniqueIdentifier();
+  
+    try {
+              
+      const order = await Order.findById(id);
+  
+      if (!order) {
+        return res.status(404).json({ error: 'Order not found' });
+      }
+  
+      
+      order.deliveredOrderId = {
+        id: uniqueIdentifier,
+        status: false,
+      };
+      await order.save();
+
+      res.send('OK');
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ error: 'Error initializing orders' });
+    }
+  });
