@@ -26,6 +26,32 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Update a review by ID
+router.put('/:id', async (req, res) => {
+  try {
+      const { Comment, note, UserID, CostumerID, orderId } = req.body;
+      const reviewId = req.params.id;
+
+      // Find the review by ID
+      const review = await Review.findById(reviewId);
+
+      if (!review) {
+          return res.status(404).json({ error: 'Review not found' });
+      }
+      // Update review properties
+      review.Comment = Comment;
+      review.note = note;
+      review.UserID = UserID;
+      review.CostumerID = CostumerID;
+      review.orderId = orderId;
+      // Save the updated review
+      await review.save();
+
+      res.json(review);
+  } catch (error) {
+      res.status(500).json({ error: 'Could not update the review' });
+  }
+});
 
 
 module.exports = router;
