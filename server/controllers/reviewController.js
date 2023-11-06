@@ -53,5 +53,20 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+// DELETE a review by ID
+router.delete('/:id', async (req, res) => {
+  try {
+      const reviewId = req.params.id;
+      const deletedReview = await Review.findByIdAndRemove(reviewId);
+      if (!deletedReview) {
+          return res.status(404).json({ message: 'Review not found' });
+      }
+      res.json({ message: 'Review deleted successfully', data: deletedReview });
+  } catch (error) {
+      res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});
+
+
 
 module.exports = router;
