@@ -16,6 +16,16 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Get all reviews
+router.get('/', async (req, res) => {
+  try {
+    const reviews = await Review.find().exec();
+    res.json(reviews);
+  } catch (error) {
+    res.status(500).json({ error: 'Could not retrieve reviews' });
+  }
+});
+
 
 
 module.exports = router;
