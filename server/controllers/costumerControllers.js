@@ -95,5 +95,40 @@ router.get('/customers/:id', async (req, res) => {
     res.status(500).json({ error: 'An error occurred while fetching the customer.' });
   }
 });  
+// Costumers-Filtrage-API
+router.get('/customers',(req,res)=>{
+  const {gender, city, id, age,isVerified,createdAt,lastName}= req.query;
+  const customers = getCustomers();
+  let filteredCustomers= customers;
+
+  if(gender){
+    filteredCustomers = filteredCustomers.filter(customer => customer.gender === gender);
+  }
+  if(city){
+    filteredCustomers = filteredCustomers.filter(customer => customer.address.city === city);
+  }
+  if(id){
+    filteredCustomers = filteredCustomers.filter(customer => customer._id===id);
+  }
+  if(age){
+    filteredCustomers = filteredCustomers.filter(customer => customer.age=== age)
+  }
+  if(isVerified){
+    filteredCustomers = filteredCustomers.filter(customer=> customer.isVerified== isVerified)
+  }
+  if(createdAt){
+    filteredCustomers = filteredCustomers.filter(customer=> customer.createdAt == createdAt)
+  }
+  if(lastName){
+    filteredCustomers = filteredCustomers.filter(customer=> customer.name.lastName == lastName)
+  }
+  res.json(filteredCustomers);
+});
+
+
+
+
+
+
 
 module.exports = router;

@@ -1,8 +1,10 @@
-const ReviewSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+
+const reviewSchema = new mongoose.Schema({
     Comment: { type: String, required: false },
     
     note: { 
-        type: Float, required: true 
+        type: Number, required: true 
     },
 
     UserID:{
@@ -13,11 +15,14 @@ const ReviewSchema = new mongoose.Schema({
         type :mongoose.Schema.Types.ObjectId ,
         ref:'Costumer',required:true},
     
-    commnadId:{
+    orderId:{
         type :mongoose.Schema.Types.ObjectId ,
-        ref:'Command',required:true
+        ref:'Command',required : true
     }
     
     
     });
-    module.exports = Review = mongoose.model('Review', ReviewSchema);
+
+const Review = mongoose.model('Review', reviewSchema);
+
+module.exports = Review
