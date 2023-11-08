@@ -13,15 +13,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// router.get("/users/:username", async (req,res) => {
-//   try {
-//     const user = await User.findOne({username: req.params.username});
-//     res.json(user);
-//   } catch (error) {
-//     console.error('Error fetching users:', error);
-//     res.status(500).json({ error: 'An error occurred while fetching users.' });
-//   }
-// });
+
 router.get("/users/:username", async (req, res) => {
   try {
     const username = req.params.username;
@@ -38,29 +30,7 @@ router.get("/users/:username", async (req, res) => {
   }
 });
 
-router.post("/addUsers", (req,res) => {
-  const { email, username, password, birthday } = req.body;
 
-  if (!email || !username || !password) {
-    return res.status(400).json({ success: false, message: "Missing required fields" });
-  }
-
-  const newUser = new User ({
-    email: email,
-    username: username,
-    password: password,
-    birthday: birthday,
-  });
-
-  newUser.save((err, result) => {
-    if (err) {
-      console.error('Failed to add user:', err);
-      return res.status(500).json({ success: false, message: "Failed to add user" });
-    } else {
-      return res.status(200).json({ success: true, message: "Successfully added user", data: result });
-    }
-  });
-});
 
 router.delete("/deleteUser/:id", (req, res) => {
   const { id } = req.params;
@@ -107,31 +77,31 @@ router.put("/UpdateUser/:id", (req, res) => {
 });
 
 //trànsàctions
-router.post('/transactions/:username', async (req, res) => {
-  try {
-    const { transactionId } = req.body;
-    const username = req.params.username;
+// router.post('/transactions/:username', async (req, res) => {
+//   try {
+//     const { transactionId } = req.body;
+//     const username = req.params.username;
 
-    const user = await User.findOne({ username });
+//     const user = await User.findOne({ username });
 
-    if (!user) {
-      return res.status(404).json({ error: 'User not found' });
-    }
+//     if (!user) {
+//       return res.status(404).json({ error: 'User not found' });
+//     }
 
-    user.successfulTransactions.push({
-      transactionId,
+//     user.successfulTransactions.push({
+//       transactionId,
       
-      date: new Date()
-    });
+//       date: new Date()
+//     });
 
-    await user.save();
+//     await user.save();
 
-    return res.status(200).json(user);
-  } catch (error) {
-    console.error('Error adding transaction:', error);
-    return res.status(500).json({ error: 'An error occurred while adding the transaction' });
-  }
-});
+//     return res.status(200).json(user);
+//   } catch (error) {
+//     console.error('Error adding transaction:', error);
+//     return res.status(500).json({ error: 'An error occurred while adding the transaction' });
+//   }
+// });
 
 
 module.exports = router;
